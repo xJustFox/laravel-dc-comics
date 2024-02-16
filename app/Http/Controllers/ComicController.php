@@ -51,12 +51,10 @@ class ComicController extends Controller
      */
     public function show(Comic $comic)
     {
-        $navLinks = config('nav_links');
-        $footerArr = config('footer_arr');
         $artists = json_decode($comic['artists']);
         $writers = json_decode($comic['writers']);
 
-        return view('comics.show', compact('footerArr','navLinks', 'comic', 'artists', 'writers'));
+        return view('comics.show', compact('comic', 'artists', 'writers'));
     }
 
     /**
