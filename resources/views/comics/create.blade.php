@@ -10,7 +10,7 @@
                 <div class="col-6">
                     <form class=" w-100 " action="{{route('comics.store')}}" method="post">
                         @csrf
-                        
+
                         <div class="my-pt-24">
                             <label class="labelComic" for="titleComics">Comics name: </label>
                             <input class="form-control form-control-sm" type="text" name="title" id="titleComics">
@@ -59,7 +59,7 @@
                         </div>
 
                         <div class="text-end mt-4 ">
-                            <button class="my-btn">Add</button>
+                            <button type="submit" class="my-btn">Add</button>
                         </div>
                     </form>
                 </div>

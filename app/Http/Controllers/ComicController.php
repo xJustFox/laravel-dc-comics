@@ -32,7 +32,7 @@ class ComicController extends Controller
         $navLinks = config('nav_links');
         $footerArr = config('footer_arr');
 
-        return view('comics.create', compact('footerArr','navLinks'));
+        return view('comics.create', compact('footerArr', 'navLinks'));
     }
 
     /**
@@ -43,7 +43,21 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $form_data = $request->all();
+
+        $comic = new Comic();
+        $comic->title = $form_data['title'];
+        $comic->description = $form_data['description'];
+        $comic->thumb = $form_data['thumb'];
+        $comic->price = $form_data['price'];
+        $comic->series = $form_data['series'];
+        $comic->sale_date = $form_data['sale_date'];
+        $comic->type = $form_data['type'];
+        $comic->artists = json_encode(explode(',', $form_data['artists']));
+        $comic->writers = json_encode(explode(',', $form_data['writers']));
+        $comic->save();
+
+        return redirect('comics.index');
     }
 
     /**
@@ -59,7 +73,7 @@ class ComicController extends Controller
         $artists = json_decode($comic['artists']);
         $writers = json_decode($comic['writers']);
 
-        return view('comics.show', compact('footerArr','navLinks', 'comic', 'artists', 'writers'));
+        return view('comics.show', compact('footerArr', 'navLinks', 'comic', 'artists', 'writers'));
     }
 
     /**
