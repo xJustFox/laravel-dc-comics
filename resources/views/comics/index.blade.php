@@ -7,6 +7,13 @@
             <div class="plate">CURRENT SERIES</div>
 
             <div class="my-row">
+
+                <div class="my-col-12 d-flex justify-content-end ">
+                    <a class="text-decoration-none" href="{{ route('comics.create')}}">
+                        <div class="my-btn">Add Comic</div>
+                    </a>
+                </div>
+
                 @foreach ($comics as $comic)
                     <div class="my-col">
                         <a class=" text-decoration-none" href="{{ route('comics.show', $comic['id']) }}">

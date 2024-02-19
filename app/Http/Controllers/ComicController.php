@@ -29,7 +29,10 @@ class ComicController extends Controller
      */
     public function create()
     {
-        //
+        $navLinks = config('nav_links');
+        $footerArr = config('footer_arr');
+
+        return view('comics.create', compact('footerArr','navLinks'));
     }
 
     /**
