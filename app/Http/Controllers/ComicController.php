@@ -82,9 +82,12 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comic $comic)
     {
-        //
+        $navLinks = config('nav_links');
+        $footerArr = config('footer_arr');
+
+        return view('comics.edit', compact('footerArr', 'navLinks', 'comic'));
     }
 
     /**
@@ -96,7 +99,21 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $form_data = $request->all();
+
+        $comic = Comic::find($id);
+        $comic->title = $form_data['title'];
+        $comic->description = $form_data['description'];
+        $comic->thumb = $form_data['thumb'];
+        $comic->price = $form_data['price'];
+        $comic->series = $form_data['series'];
+        $comic->sale_date = $form_data['sale_date'];
+        $comic->type = $form_data['type'];
+        $comic->artists = json_encode(explode(',', $form_data['artists']));
+        $comic->writers = json_encode(explode(',', $form_data['writers']));
+        $comic->update();
+
+        return redirect()->route('comics.show', $id);
     }
 
     /**

@@ -5,6 +5,10 @@
         <div class="container-sm my-container px-5">
             <img class="card-comic" src="{{ $comic['thumb'] }}" alt="">
 
+            <a class="text-decoration-none" href="{{ route('comics.edit', $comic->id)}}">
+              <div class="my-btn">Modify Comic</div>
+            </a>
+
             <div class="row">
                 <div class="col-9 my-pt-24">
 

@@ -172,6 +172,21 @@ main {
             color: #003f5e;
         }
 
+        .my-btn {
+            position: absolute;
+            top: 110px;
+            background-color: #0282f9;
+            border: 0;
+            padding: 5px 20px;
+            color: #fff;
+            font-weight: 600;
+            font-size: small;
+
+            &:hover {
+                transform: scale(1.1);
+            }
+        }
+
         .my-container{
             position: relative;
             padding-top: 130px;
