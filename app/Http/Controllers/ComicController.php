@@ -43,8 +43,18 @@ class ComicController extends Controller
      */
     public function store(Request $request)
     {
-        $form_data = $request->all();
-
+        $form_data = $request->validate([
+            'title'         => 'required|string|max:50' ,
+            'description'   => 'required|string',
+            'thumb'         => 'required|string',
+            'price'         => 'required|string|max:10',
+            'series'        => 'required|string|max:50',
+            'sale_date'     => 'required|date',
+            'type'          => 'required|string|max:50',
+            'artists'       => 'required',
+            'writers'       => 'required',
+        ]);
+        
         $comic = new Comic();
         $comic->title = $form_data['title'];
         $comic->description = $form_data['description'];
@@ -57,7 +67,7 @@ class ComicController extends Controller
         $comic->writers = json_encode(explode(',', $form_data['writers']));
         $comic->save();
 
-        return redirect('comics.index');
+        return redirect()->route('comics.index');
     }
 
     /**
@@ -99,7 +109,17 @@ class ComicController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $form_data = $request->all();
+        $form_data = $request->validate([
+            'title'         => 'required|string|max:50' ,
+            'description'   => 'required|string',
+            'thumb'         => 'required|string',
+            'price'         => 'required|string|max:10',
+            'series'        => 'required|string|max:50',
+            'sale_date'     => 'required|date',
+            'type'          => 'required|string|max:50',
+            'artists'       => 'required',
+            'writers'       => 'required',
+        ]);
 
         $comic = Comic::find($id);
         $comic->title = $form_data['title'];
