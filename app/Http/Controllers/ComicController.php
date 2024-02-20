@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreComicRequest;
+use App\Http\Requests\UpgradeComicRequest;
 use Illuminate\Http\Request;
 use App\Models\Comic;
 
@@ -43,9 +45,11 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreComicRequest $request)
     {
-        $form_data =  $this->validation($request->all());
+        // $form_data =  $this->validation($request->all());
+
+        $form_data = $request->all();
         
         $comic = new Comic();
         
@@ -94,9 +98,11 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpgradeComicRequest $request, $id)
     {
-        $form_data =  $this->validation($request->all());
+        // $form_data =  $this->validation($request->all());
+
+        $form_data = $request->all();
 
         $comic = Comic::find($id);
         
@@ -120,35 +126,35 @@ class ComicController extends Controller
 
         return redirect()->route('comics.index');
     }
-    private function validation($data){
-        $validator = Validator::make($data, [
-            'title'         => 'required|string|max:50' ,
-            'description'   => 'required|string',
-            'thumb'         => 'required|string',
-            'price'         => 'required|string|max:10',
-            'series'        => 'required|string|max:50',
-            'sale_date'     => 'required|date',
-            'type'          => 'required|string|max:50',
-            'artists'       => 'required',
-            'writers'       => 'required',
-        ], 
-        [
-            'title.required'        => 'Il campo Comic name è obbligatorio.',
-            'title.max'             => 'Il campo deve avere massimo 50 caratteri',
-            'description.required'  => 'Il campo Description è obbligatorio.',
-            'thumb.required'        => 'Il campo Comic Cover è obbligatorio.',
-            'price.required'        => 'Il campo Price è obbligatorio',
-            'price.max'             => 'Il campo deve avere massimo 10 caratteri',
-            'series.required'       => 'Il campo Series è obbligatorio.',
-            'series.max'            => 'Il campo deve avere massimo 50 caratteri',
-            'sale_date.required'    => 'Il campo Sale Date è obbligatorio.',
-            'sale_date.date'        => 'Il campo Sale Date non è valido.',
-            'type.required'         => 'Il campo Type è obbligatorio.',
-            'type.max'              => 'Il campo deve avere massimo 50 caratteri',
-            'artists.required'      => 'Il campo Artists è obbligatorio.',
-            'writers.required'      => 'Il campo Writers name è obbligatorio.',
-        ])->validate();
+    // private function validation($data){
+    //     $validator = Validator::make($data, [
+    //         'title'         => 'required|string|max:50' ,
+    //         'description'   => 'required|string',
+    //         'thumb'         => 'required|string',
+    //         'price'         => 'required|string|max:10',
+    //         'series'        => 'required|string|max:50',
+    //         'sale_date'     => 'required|date',
+    //         'type'          => 'required|string|max:50',
+    //         'artists'       => 'required',
+    //         'writers'       => 'required',
+    //     ], 
+    //     [
+    //         'title.required'        => 'Il campo Comic name è obbligatorio.',
+    //         'title.max'             => 'Il campo deve avere massimo 50 caratteri',
+    //         'description.required'  => 'Il campo Description è obbligatorio.',
+    //         'thumb.required'        => 'Il campo Comic Cover è obbligatorio.',
+    //         'price.required'        => 'Il campo Price è obbligatorio',
+    //         'price.max'             => 'Il campo deve avere massimo 10 caratteri',
+    //         'series.required'       => 'Il campo Series è obbligatorio.',
+    //         'series.max'            => 'Il campo deve avere massimo 50 caratteri',
+    //         'sale_date.required'    => 'Il campo Sale Date è obbligatorio.',
+    //         'sale_date.date'        => 'Il campo Sale Date non è valido.',
+    //         'type.required'         => 'Il campo Type è obbligatorio.',
+    //         'type.max'              => 'Il campo deve avere massimo 50 caratteri',
+    //         'artists.required'      => 'Il campo Artists è obbligatorio.',
+    //         'writers.required'      => 'Il campo Writers name è obbligatorio.',
+    //     ])->validate();
 
-        return $validator;
-    }
+    //     return $validator;
+    // }
 }
