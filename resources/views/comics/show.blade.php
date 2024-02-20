@@ -12,7 +12,7 @@
               </a>
 
               {{-- DELETE FORM --}}
-              <form class="mx-3" action="{{ route('comics.destroy', $comic->id)}}" method="post">
+              <form class="mx-3" action="{{ route('comics.destroy', $comic->id)}}" method="post" onsubmit="return confirm('Sei sicuro di voler eliminare questo fumetto?')">
                 @csrf
                 @method('DELETE')
   
