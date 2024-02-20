@@ -18,11 +18,16 @@
                     <div class="my-col">
                         <a class=" text-decoration-none" href="{{ route('comics.show', $comic['id']) }}">
                             <div class="imgContainer">
-                                <img src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
+                                @if ($comic['thumb'] != 'no-img')
+                                    <img src="{{ $comic['thumb'] }}" alt="{{ $comic['series'] }}">
+                                    
+                                @else
+                                    <img class="card-comic" src="{{Vite::asset('resources/img/error-img.jpg')}}" alt="{{ $comic['series'] }}">
+                                @endif
                             </div>
                             <div class="price">{{ $comic['price'] }}</div>
                             <div class="textComics">
-                                {{ $comic['series'] }}
+                                {{ $comic['title'] }}
                             </div>
                         </a>          
                     </div>
