@@ -81,9 +81,8 @@ main {
         .my-row {
             padding: 0 20px;
             display: flex;
-            justify-content: space-between;
             flex-wrap: wrap;
-            gap: 20px 5px;
+            gap: 20px 15px;
 
 
         }
@@ -114,7 +113,7 @@ main {
         }
 
         .my-col {
-            width: calc(100% / 6 - 10px);
+            width: calc(100% / 6 - 15px);
             position: relative;
 
             &:hover {
@@ -194,7 +193,7 @@ main {
             .card-comic{
                 border: 1px solid white;
                 position: absolute;
-                top: -225px;
+                top: -230px;
                 width: 180px;
                 height: 290px;
             }
