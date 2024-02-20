@@ -56,18 +56,18 @@ class ComicController extends Controller
         ]);
         
         $comic = new Comic();
-        // $comic->title = $form_data['title'];
-        // $comic->description = $form_data['description'];
-        // $comic->thumb = $form_data['thumb'];
-        // $comic->price = $form_data['price'];
-        // $comic->series = $form_data['series'];
-        // $comic->sale_date = $form_data['sale_date'];
-        // $comic->type = $form_data['type'];
-        // $comic->artists = json_encode(explode(',', $form_data['artists']));
-        // $comic->writers = json_encode(explode(',', $form_data['writers']));
-        // $comic->save();
+        $comic->title = $form_data['title'];
+        $comic->description = $form_data['description'];
+        $comic->thumb = $form_data['thumb'];
+        $comic->price = $form_data['price'];
+        $comic->series = $form_data['series'];
+        $comic->sale_date = $form_data['sale_date'];
+        $comic->type = $form_data['type'];
+        $comic->artists = json_encode(explode(',', $form_data['artists']));
+        $comic->writers = json_encode(explode(',', $form_data['writers']));
+        $comic->save();
 
-        $comic->fill($form_data);
+        // $comic->fill($form_data);
 
         return redirect()->route('comics.show', ['comic' => $comic]);
     }
@@ -124,18 +124,18 @@ class ComicController extends Controller
         ]);
 
         $comic = Comic::find($id);
-        // $comic->title = $form_data['title'];
-        // $comic->description = $form_data['description'];
-        // $comic->thumb = $form_data['thumb'];
-        // $comic->price = $form_data['price'];
-        // $comic->series = $form_data['series'];
-        // $comic->sale_date = $form_data['sale_date'];
-        // $comic->type = $form_data['type'];
+        $comic->title = $form_data['title'];
+        $comic->description = $form_data['description'];
+        $comic->thumb = $form_data['thumb'];
+        $comic->price = $form_data['price'];
+        $comic->series = $form_data['series'];
+        $comic->sale_date = $form_data['sale_date'];
+        $comic->type = $form_data['type'];
         $comic->artists = json_encode(explode(',', $form_data['artists']));
         $comic->writers = json_encode(explode(',', $form_data['writers']));
-        // $comic->update();
+        $comic->update();
 
-        $comic->update($form_data);
+        // $comic->update($form_data);
         return redirect()->route('comics.show', $id);
     }
 
