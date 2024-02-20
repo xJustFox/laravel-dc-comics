@@ -16,12 +16,11 @@
                 </a>
 
                 {{-- DELETE FORM --}}
-                <form class="mx-3" action="{{ route('comics.destroy', $comic->id) }}" method="post"
-                    onsubmit="return confirm('Sei sicuro di voler eliminare questo fumetto?')">
+                <form class="mx-3 delete-comic" action="{{ route('comics.destroy', $comic->id) }}" method="post">
                     @csrf
                     @method('DELETE')
 
-                    <button class="my-btn bg-danger" type="submit">Delete Comic</button>
+                    <button class="my-btn bg-danger" type="submit" data-comic-title="{{ $comic->title }}">Delete Comic</button>
                 </form>
             </div>
 
@@ -140,4 +139,6 @@
             </div>
         </div>
     </div>
+  
+    @include('partials.modal_delete')
 @endsection
