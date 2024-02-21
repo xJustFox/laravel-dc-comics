@@ -86,7 +86,8 @@
                             @enderror
                         </div>
 
-                        <div class="text-end mt-4 ">
+                        <div class="mt-4 text-end">
+                            <a class="my-btn mx-3 text-decoration-none" href="{{ route('comics.show', $comic['id']) }}">Back</a>
                             <button type="submit" class="my-btn">Modify</button>
                         </div>
                     </form>
