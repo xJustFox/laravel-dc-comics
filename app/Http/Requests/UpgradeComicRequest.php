@@ -24,13 +24,13 @@ class UpgradeComicRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'         => 'required|string|max:50',
-            'description'   => 'required|string',
-            'thumb'         => 'required|string',
-            'price'         => 'required|string|max:10',
-            'series'        => 'required|string|max:50',
+            'title'         => 'required|max:50',
+            'description'   => 'required',
+            'thumb'         => 'required',
+            'price'         => 'required|max:10',
+            'series'        => 'required|max:50',
             'sale_date'     => 'required|date',
-            'type'          => 'required|string|max:50',
+            'type'          => 'required|max:50',
             'artists'       => 'required',
             'writers'       => 'required',
         ];
